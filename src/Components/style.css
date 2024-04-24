@@ -1,0 +1,11 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: #0B0A08;
+}
+.header .hd img{
+    width: 100%;
+    height: 450px;
+}
