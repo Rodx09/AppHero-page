@@ -3,7 +3,10 @@ import {useParams} from 'react-router-dom'
 import axios from 'axios';
 import { useState } from "react"
 import { useEffect } from "react"
-import '../Components/styleD.css';
+import Swal from 'sweetalert2'
+import '../css/styleD.css'
+
+
 export const CardDetails = () => {
   const {id}=useParams();
   const apiKey = "b5bcf0ce911b2c47e82d34ea7ca52847";
@@ -14,13 +17,18 @@ export const CardDetails = () => {
   useEffect(() => {
     const fetch = async() => {
         const res = await axios.get(url)
-        let code = res['data']['code'];
-        console.log(res.data.data.results[0]);
+        let code = res['status'];
         if(code == 200)
         {
             setItem(res.data.data.results[0]);
         }else{
-
+            let statusText = res['statusText'];
+            Swal.fire({
+                title: 'Hubo un problema con el servicio',
+                text: {statusText},
+                icon: 'error',
+                confirmButtonText: 'Cool'
+              })
         }
     }
     fetch();

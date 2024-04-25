@@ -3,7 +3,8 @@ import { Card } from "./Card"
 import axios from "axios"
 import { useState } from "react"
 import { useEffect } from "react"
-import '../Components/style.css';
+import '../css/style.css';
+import Swal from 'sweetalert2'
 export const Home = () => {
     const [url, setUrl] = useState("http://gateway.marvel.com/v1/public/characters?ts=1&apikey=b5bcf0ce911b2c47e82d34ea7ca52847&hash=c50df6781fe9a67891619f6385e61835")
     const [item, setItem] = useState();
@@ -11,13 +12,20 @@ export const Home = () => {
     useEffect(() => {
         const fetch = async() => {
             const res = await axios.get(url)
-            console.log(res);
-            if(res.code == "ERR_BAD_REQUEST")
-            {
-                alert(res.message);
-            }else{
-                setItem(res.data.data.results);
-            }
+            
+            let code = res['status'];
+                if(code == 200)
+                {
+                    setItem(res.data.data.results);
+                }else{
+                        let statusText = res['statusText'];
+                        Swal.fire({
+                            title: 'Hubo un problema con el servicio',
+                            text: {statusText},
+                            icon: 'error',
+                            confirmButtonText: 'Cool'
+                          })
+                    }
         }
         fetch();
     }, [url])
@@ -28,17 +36,14 @@ export const Home = () => {
 
     return ( 
       <>
-        <div className = "header" >
-        <div className = "bg" >
-        <img src = "./images/header.jpg"
-        alt = "" />
-        </div> 
-        </div> <div className = "content" >
+      <div className="mainContent">
+  <div className = "content" >
 
         {
             (!item) ? < p > Sin registros </p>:<Card data={item}/>
         } 
         </div> 
+        </div>
         </>
     )
 }

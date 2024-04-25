@@ -8,8 +8,6 @@ body {
     align-items: center;
     min-height: 100vh;
     font-family: 'Poppins', sans-serif;
-    background-image: url(https://uswalldecor.com/cdn/shop/products/DI0946_f8179f6e-1182-47f4-bc77-3a942e912583.jpg?v=1581370087&width=1445);
-
 }
 
 .container {
@@ -18,7 +16,7 @@ body {
     flex-wrap: wrap;
     justify-content: space-between;
     width: 900px;
-    height: 600px;
+    height: 900px;
     background: #fff;
     margin: 20px;
 }
@@ -65,7 +63,7 @@ body {
     overflow: auto;
 }
 .listComics{
-    height: 200px;
+    height: 400px;
     overflow: auto;
 }
 
