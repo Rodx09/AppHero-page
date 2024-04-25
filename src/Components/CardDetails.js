@@ -20,6 +20,7 @@ export const CardDetails = () => {
         let code = res['status'];
         if(code == 200)
         {
+            console.log(res.data.data.results[0]);
             setItem(res.data.data.results[0]);
         }else{
             let statusText = res['statusText'];
@@ -47,15 +48,14 @@ export const CardDetails = () => {
             <div className="content">
                 <h2>{item.name}</h2>
                 <div className='description'>
-                    
-                        {item.description}  
-         
+                {item.description ? item.description : <h4>Sin descripción</h4>}
                 </div> 
                 <h3>Listado de comics</h3>
                 <ul className='listComics'>
-                {item.comics.items.map(comic => (
+                {Object.keys(item.comics.items).length > 0 ? item.comics.items.map(comic => (
                         <li>{comic.name}</li>
-                        ))}
+                        )) : <h4>Sin resultados</h4>}
+                
                 </ul>  
             </div>
         </div>
