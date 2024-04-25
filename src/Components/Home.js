@@ -3,6 +3,7 @@ import { Card } from "./Card"
 import axios from "axios"
 import { useState } from "react"
 import { useEffect } from "react"
+import '../Components/style.css';
 export const Home = () => {
     const [url, setUrl] = useState("http://gateway.marvel.com/v1/public/characters?ts=1&apikey=b5bcf0ce911b2c47e82d34ea7ca52847&hash=c50df6781fe9a67891619f6385e61835")
     const [item, setItem] = useState();
@@ -10,7 +11,13 @@ export const Home = () => {
     useEffect(() => {
         const fetch = async() => {
             const res = await axios.get(url)
-            setItem(res.data.data.results);
+            console.log(res);
+            if(res.code == "ERR_BAD_REQUEST")
+            {
+                alert(res.message);
+            }else{
+                setItem(res.data.data.results);
+            }
         }
         fetch();
     }, [url])
@@ -23,20 +30,13 @@ export const Home = () => {
       <>
         <div className = "header" >
         <div className = "bg" >
-        <img src = "./images/marvel.png"
+        <img src = "./images/header.jpg"
         alt = "" />
         </div> 
-        <div className = "search-bar" >
-        <input type = "search"
-        placeholder = 'Buscar heroe'
-        className = 'search'
-        onChange = { e => setSearch(e.target.value) }
-        onKeyPress = { searchMarvel }
-        /> </div > 
         </div> <div className = "content" >
 
         {
-            (!item) ? < p > Not Found </p>:<Card data={item}/>
+            (!item) ? < p > Sin registros </p>:<Card data={item}/>
         } 
         </div> 
         </>
