@@ -9,7 +9,7 @@ export const Card = ({ data }) => {
           data.map(item => {
             return (
               <div className="card" key={item.id} 
-              onClick={()=>navigate(`/${item.id}`)}>
+              onClick={()=>navigate(`/AppHero-page/build/${item.id}`)}>
                 <img src={`${item.thumbnail.path}.${item.thumbnail.extension}`} alt="" />
                 <div className="title">
                   <h3>{item.name}</h3>
