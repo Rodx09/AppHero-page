@@ -6,7 +6,7 @@ import { useEffect } from "react"
 import '../css/style.css';
 import Swal from 'sweetalert2'
 export const Home = () => {
-    const [url, setUrl] = useState("http://gateway.marvel.com/v1/public/characters?ts=1&apikey=b5bcf0ce911b2c47e82d34ea7ca52847&hash=c50df6781fe9a67891619f6385e61835")
+    const [url, setUrl] = useState("https://gateway.marvel.com/v1/public/characters?ts=1&apikey=b5bcf0ce911b2c47e82d34ea7ca52847&hash=c50df6781fe9a67891619f6385e61835")
     const [item, setItem] = useState();
     const [search, setSearch] = useState("");
     useEffect(() => {
@@ -31,7 +31,7 @@ export const Home = () => {
     }, [url])
 
     const searchMarvel = () => {
-        setUrl(`https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${search}&ts=1&apikey=2e1cdeec426ae323484f29024084c206&hash=d516513ba95b9407c7aca0f73b241f8a`)
+        setUrl(` https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${search}&ts=1&apikey=2e1cdeec426ae323484f29024084c206&hash=d516513ba95b9407c7aca0f73b241f8a`)
     }
 
     return ( 
