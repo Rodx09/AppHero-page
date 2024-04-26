@@ -13,8 +13,8 @@ function App() {
     <Header></Header>
     <BrowserRouter>
     <Routes>
-    <Route path='/AppHero-page'element={<Home/>}/>
-    <Route path='/AppHero-page/:id' element={<CardDetails/>}/>
+    <Route path='/AppHero-page/build'element={<Home/>}/>
+    <Route path='/AppHero-page/build/:id' element={<CardDetails/>}/>
      </Routes>
      </BrowserRouter>
     </>
