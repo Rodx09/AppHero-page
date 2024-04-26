@@ -13,7 +13,7 @@ export const Header = () => {
     <>
 <nav>
   <div className="wrapper">
-    <div className="logo"><a href="/"><i title='Ir a inicio' className="bi bi-house-fill"></i> Marvel Comics</a></div>
+    <div className="logo"><a href="/AppHero-page"><i title='Ir a inicio' className="bi bi-house-fill"></i> Marvel Comics</a></div>
     <input type="radio" name="slider" id="menu-btn" />
     <input type="radio" name="slider" id="close-btn" />
     <ul className="nav-links">
